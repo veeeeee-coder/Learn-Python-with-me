@@ -1,0 +1,4 @@
+# Strings is a datatype that stores sequence of character
+# concat: "hello"+"world"->"helloworld"
+# length of str
+len(str)
