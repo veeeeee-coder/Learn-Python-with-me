@@ -1,87 +1,84 @@
-🔹 Q1: Write names → read and print
-
-This program writes 5 user-entered names to a file, then reads and prints them.
-
-# Write names
-with open("names.txt", "w") as f:
+# Q1
+# Step 1: Write names
+with open("names.txt", "w") as file:
     for i in range(5):
-        name = input("Enter name: ")
-        f.write(name + "\n")
+        name = input(f"Enter name {i+1}: ")
+        file.write(name + "\n")
 
-# Read and print names
-with open("names.txt", "r") as f:
-    print("Names in file:")
-    for line in f:
+# Step 2: Read and print
+with open("names.txt", "r") as file:
+    print("\nNames in file:")
+    for line in file:
         print(line.strip())
-🔹 Q2: Append log → read all logs
 
-This program adds a log entry and then displays all logs.
 
-# Append log
-with open("log.txt", "a") as f:
-    f.write("Program run successfully\n")
 
-# Read logs
-with open("log.txt", "r") as f:
-    print("Log entries:")
-    print(f.read())
-🔹 Q3: List comprehension (filter > 15)
+# Q2
+# Step 1: Append log
+with open("log.txt", "a") as file:
+    file.write("Program run successfully\n")
 
-This creates a new list with numbers greater than 15.
+# Step 2: Read logs
+with open("log.txt", "r") as file:
+    print("\nLogs:")
+    print(file.read())
 
-nums = [5, 10, 15, 20, 25]
 
-new_list = [x for x in nums if x > 15]
+
+
+# Q3
+numbers = [5, 10, 15, 20, 25]
+
+new_list = [num for num in numbers if num > 15]
 
 print("Filtered list:", new_list)
-🔹 Q4: JSON (save → load → update)
 
-This stores city data in JSON, reads it, prints it, then updates it.
 
+# Q4
 import json
 
 # Step 1: Create dictionary
 cities = {
     "Hyderabad": 10000000,
-    "Delhi": 19000000,
-    "Mumbai": 20000000
+    "Mumbai": 20000000,
+    "Chennai": 11000000
 }
 
 # Step 2: Save to JSON
-with open("cities.json", "w") as f:
-    json.dump(cities, f, indent=4)
+with open("cities.json", "w") as file:
+    json.dump(cities, file)
 
 # Step 3: Load and print
-with open("cities.json", "r") as f:
-    data = json.load(f)
+with open("cities.json", "r") as file:
+    data = json.load(file)
 
-print("Cities and populations:")
-for city, pop in data.items():
-    print(city, ":", pop)
+print("\nCity Data:")
+for city, population in data.items():
+    print(city, ":", population)
 
-# Step 4: Take user input and update
+# Step 4: Add new city
 new_city = input("Enter new city: ")
-population = int(input("Enter population: "))
+new_population = int(input("Enter population: "))
 
-data[new_city] = population
+data[new_city] = new_population
 
 # Step 5: Save updated data
-with open("cities.json", "w") as f:
-    json.dump(data, f, indent=4)
-🔹 Q5: Exception handling (file not found)
+with open("cities.json", "w") as file:
+    json.dump(data, file)
 
-This safely handles the case when a file doesn’t exist.
+print("Updated successfully!")
 
+
+
+
+
+
+# Q5
 try:
-    with open("data.txt", "r") as f:
-        print(f.read())
+    with open("data.txt", "r") as file:
+        print(file.read())
 except FileNotFoundError:
     print("File not found!")
-🔥 Final Understanding
-w → overwrite file
-a → append data
-r → read file
-with → auto close file
-list comprehension → compact filtering
-json.dump/load → file handling
-try-except → prevents crash
+
+
+
